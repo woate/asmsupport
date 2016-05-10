@@ -14,13 +14,16 @@ import org.junit.Test;
  * 测试创建一个实现类
  */
 //@Ignore
-public class Test1 {
+public class Lesson1 {
+    static final String LESSON = "Lesson1";
+    static final String PACKAGE = "lesson1";
+    static final String OUTPUT_PATH = ".";
     /**
      * 创建一个默认访问域的类Test1test1
      */
     @Test
     public void test1(){
-        DummyClass dc = new DummyClass("Test1test1").setClassOutPutPath(".");
+        DummyClass dc = new DummyClass().package_(PACKAGE).name(LESSON + "test1").setClassOutPutPath(OUTPUT_PATH);
         Class cls = dc.build();
     }
     /**
@@ -28,7 +31,7 @@ public class Test1 {
      */
     @Test
     public void test2(){
-        DummyClass dc = new DummyClass("Test1test2").public_().setClassOutPutPath(".");
+        DummyClass dc = new DummyClass().package_(PACKAGE).name(LESSON + "test2").public_().setClassOutPutPath(OUTPUT_PATH);
         Class cls = dc.build();
     }
     /**
@@ -36,7 +39,7 @@ public class Test1 {
      */
     @Test
     public void test3(){
-        DummyClass dc = new DummyClass("Test1test3").abstract_().setClassOutPutPath(".");
+        DummyClass dc = new DummyClass().package_(PACKAGE).name(LESSON + "test3").abstract_().setClassOutPutPath(OUTPUT_PATH);
         Class cls = dc.build();
     }
 
@@ -45,14 +48,14 @@ public class Test1 {
      */
     @Test
     public void test4(){
-        DummyClass dc = new DummyClass("Test1test4").setClassOutPutPath(".");
+        DummyClass dc = new DummyClass().package_(PACKAGE).name(LESSON + "test4").setClassOutPutPath(OUTPUT_PATH);
         dc.newStaticBlock(new StaticBlockBody() {
             @Override
             public void body() {
-                Field out = getType(System.class).getField("out");
-                call(out.getDeclaringClass(), "println", val("Hello ASMSupport"));
-
-                return_();
+//                Field out = getType(System.class).getField("out");
+//                call(out.getDeclaringClass(), "println", val("Hello ASMSupport"));
+//
+//                return_();
             }
         });
         Class cls = dc.build();
